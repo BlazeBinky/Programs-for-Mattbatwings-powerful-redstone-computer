@@ -1,0 +1,15 @@
+name: Temporary hosted-runner diagnostic
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/runner-probe.yml"
+jobs:
+  runner-probe:
+    runs-on: windows-2022
+    steps:
+      - name: Verify hosted Windows runner starts
+        shell: pwsh
+        run: |
+          Write-Host "HOSTED_RUNNER_OK"
+          Write-Host "Runner: $env:RUNNER_NAME"
